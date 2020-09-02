@@ -17,17 +17,13 @@ jobs:
     steps:
       - name: Install native-image
         run: gu install native-image
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get location of maven local repository
-        id: maven-cache
-        run: |
-          echo "::set-output name=dir::$(./mvn help:evaluate -Dexpression=settings.localRepository | grep -v INFO)"
       - name: Restore cache of maven local repository
         uses: actions/cache@v2
         with:
-          path: ${{ steps.maven-cache.outputs.dir }}
+          path: ~/.m2
           key: .m2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Build with Maven
         run: ./mvnw package
       - name: Upload binary
