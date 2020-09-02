@@ -1,4 +1,6 @@
 # rand
+![CI](https://github.com/miya10kei/rand/workflows/CI/badge.svg)  
+
 This is a command line tool to shuffle some values.  
 
 # Usage
