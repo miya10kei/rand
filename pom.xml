@@ -11,13 +11,15 @@
 
   <properties>
     <java.version>11</java.version>
+    <graalvm.version>20.2.0</graalvm.version>
+    <picocli.version>4.5.1</picocli.version>
     <encoding>UTF-8</encoding>
     <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
     <main.class>com.miya10kei.rand.Main</main.class>
 
-    <dependencies.picocli.version>4.5.1</dependencies.picocli.version>
-    <dependencies.lombok.version>1.18.2</dependencies.lombok.version>
+    <dependencies.graal.version>${graalvm.version}</dependencies.graal.version>
+    <dependencies.picocli.version>${picocli.version}</dependencies.picocli.version>
 
     <dependencies.spock.version>2.0-M3-groovy-3.0</dependencies.spock.version>
     <dependencies.byte-buddy.version>1.9.3</dependencies.byte-buddy.version>
@@ -31,8 +33,9 @@
     <plugins.errorprone.version>2.4.0</plugins.errorprone.version>
     <plugins.exec.version>3.0.0</plugins.exec.version>
     <plugins.gmavenplus.version>1.6</plugins.gmavenplus.version>
-    <plugins.graalvm.version>20.2.0</plugins.graalvm.version>
+    <plugins.graalvm.version>${graalvm.version}</plugins.graalvm.version>
     <plugins.jar.version>3.2.0</plugins.jar.version>
+    <plugins.picocli-codegen.version>${picocli.version}</plugins.picocli-codegen.version>
     <plugins.sb-contrib.version>7.4.7</plugins.sb-contrib.version>
     <plugins.spotbugs.version>4.0.4</plugins.spotbugs.version>
     <plugins.surefire.version>2.22.2</plugins.surefire.version>
@@ -58,9 +61,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${dependencies.lombok.version}</version>
+      <groupId>org.graalvm.sdk</groupId>
+      <artifactId>graal-sdk</artifactId>
+      <version>${dependencies.graal.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -94,6 +97,7 @@
           <compilerArgs>
             <arg>-XDcompilePolicy=simple</arg>
             <arg>-Xplugin:ErrorProne</arg>
+            <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
           </compilerArgs>
           <annotationProcessorPaths>
             <path>
@@ -102,9 +106,9 @@
               <version>${plugins.errorprone.version}</version>
             </path>
             <path>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>${dependencies.lombok.version}</version>
+              <groupId>info.picocli</groupId>
+              <artifactId>picocli-codegen</artifactId>
+              <version>${plugins.picocli-codegen.version}</version>
             </path>
           </annotationProcessorPaths>
         </configuration>

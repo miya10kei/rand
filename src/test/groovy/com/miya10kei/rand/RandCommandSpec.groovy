@@ -3,7 +3,7 @@ package com.miya10kei.rand
 import picocli.CommandLine
 import spock.lang.Specification
 
-class RandCommandTest extends Specification {
+class RandCommandSpec extends Specification {
   private CommandLine cmd
   private StringWriter sw
 
@@ -26,7 +26,7 @@ class RandCommandTest extends Specification {
     sw.toString().split("\n").with {
       assert it.length === 11
       it.each {
-        assert it.matches(/^\s*\d+:\s\w+$/)
+        assert it.matches(/^\s*\d+:\sval\d{1,2}$/)
       }
     }
   }
