@@ -11,14 +11,18 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    container:
+      image: oracle/graalvm-ce:20.2.0-java11
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      - name: Install native-image
+        run: gu install native-image
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build with Maven
+        run: ./mvnw package
+      - name: Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: binary-${{ matrix.os }}-${{ matrix.node }}
+          path: target/rand
