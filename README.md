@@ -5,7 +5,10 @@ This is a command line tool to shuffle some values.
 
 # Usage
 ```bash
-rand val1 val2 val3
+$ rand val1 val2 val3
+1: val1
+2: val3
+3: val2
 ```
 
 # Build
