@@ -36,10 +36,15 @@
     <plugins.graalvm.version>${graalvm.version}</plugins.graalvm.version>
     <plugins.jar.version>3.2.0</plugins.jar.version>
     <plugins.picocli-codegen.version>${picocli.version}</plugins.picocli-codegen.version>
+    <plugins.release.version>2.5.3</plugins.release.version>
     <plugins.sb-contrib.version>7.4.7</plugins.sb-contrib.version>
     <plugins.spotbugs.version>4.0.4</plugins.spotbugs.version>
     <plugins.surefire.version>2.22.2</plugins.surefire.version>
   </properties>
+
+  <scm>
+    <connection>scm:git:git@github.com:miya10kei/rand.git</connection>
+  </scm>
 
   <dependencyManagement>
     <dependencies>
@@ -259,6 +264,12 @@
             --no-fallback
           </buildArgs>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${plugins.release.version}</version>
       </plugin>
 
       <plugin>
