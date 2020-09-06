@@ -1,6 +1,5 @@
-com.miya10kei:rand:jar:1.0.0-SNAPSHOT
+com.miya10kei:rand:jar:1.0.1-SNAPSHOT
 +- info.picocli:picocli:jar:4.5.1:compile
-+- org.graalvm.sdk:graal-sdk:jar:20.2.0:provided
 +- org.spockframework:spock-core:jar:2.0-M3-groovy-3.0:test
 |  +- org.codehaus.groovy:groovy:jar:3.0.4:test
 |  +- org.junit.platform:junit-platform-engine:jar:1.7.0-M1:test

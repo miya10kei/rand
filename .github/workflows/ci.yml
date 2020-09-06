@@ -7,7 +7,14 @@ on:
     branches: [ master ]
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - run: echo "${{ github.event.head_commit.message }}"
+
   build:
+    needs: prepare
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -16,7 +23,8 @@ jobs:
       image: oracle/graalvm-ce:20.2.0-java11
     steps:
       - name: Install native-image
-        run: gu install native-image
+        run: |
+          gu install native-image
       - name: Restore cache of maven local repository
         uses: actions/cache@v2
         with:
@@ -25,7 +33,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build with Maven
-        run: ./mvnw package
+        run: |
+          ./mvnw package -Dnative.skip=false
       - name: Upload binary
         uses: actions/upload-artifact@v2
         with:
