@@ -17,7 +17,7 @@ jobs:
     needs: prepare
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
     container:
       image: oracle/graalvm-ce:20.2.0-java11
@@ -40,3 +40,9 @@ jobs:
         with:
           name: rand-${{ matrix.os }}
           path: target/rand
+      - name: Slack notification
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.1.0
+        env:
+          SLACK_COLOR: danger
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
