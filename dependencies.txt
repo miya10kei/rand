@@ -1,4 +1,4 @@
-com.miya10kei:rand:jar:1.0.1-SNAPSHOT
+com.miya10kei:rand:jar:1.0.0-SNAPSHOT
 +- info.picocli:picocli:jar:4.5.1:compile
 +- org.spockframework:spock-core:jar:2.0-M3-groovy-3.0:test
 |  +- org.codehaus.groovy:groovy:jar:3.0.4:test
