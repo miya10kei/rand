@@ -8,7 +8,9 @@ import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
-@Command(name = "shuffle", description = "Shuffle the given values", mixinStandardHelpOptions = true)
+@Command(name = "shuffle",
+    description = "Shuffle the given values",
+    mixinStandardHelpOptions = true)
 public class ShuffleCommand implements Callable<Integer> {
   @Spec
   private CommandSpec spec;
