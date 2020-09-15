@@ -4,7 +4,7 @@
 
   <groupId>com.miya10kei</groupId>
   <artifactId>rand</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>rand</name>
 
   <properties>
@@ -43,7 +43,7 @@
 
   <scm>
     <connection>scm:git:git@github.com:miya10kei/rand.git</connection>
-    <tag>v1.0.0-SNAPSHOT</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencyManagement>
